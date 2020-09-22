@@ -1,3 +1,4 @@
+import { throttle } from 'lodash';
 import React, { useEffect } from 'react';
 
 const ScrollComponent = () => {
@@ -7,7 +8,7 @@ const ScrollComponent = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', throttle(300, onScroll));
   }, []);
 
   return <div>스크롤 컴포넌트</div>;
