@@ -8,11 +8,17 @@ export const InterObser = (target, event = () => {}) => {
   };
 
   const observer = new IntersectionObserver((entries, observer) => {
-    const { target, isIntersecting } = entries[0];
-    console.log(target, isIntersecting);
-    if (!isIntersecting) return;
-    observer.disconnect();
-    event();
+    entries.forEach((entry) => {
+      console.log(
+        entry.boundingClientRect,
+        entry.intersectionRatio,
+        entry.intersectionRect,
+        entry.isIntersecting,
+        entry.rootBounds,
+        entry.target,
+        entry.time
+      );
+    });
   }, options);
 
   observer.observe(target);
