@@ -19,6 +19,8 @@ export const InterObser = (target, event = () => {}) => {
         entry.time
       );
     });
+
+    observer.unobserve(target);
   }, options);
 
   observer.observe(target);
